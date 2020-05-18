@@ -28,7 +28,12 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'vim-scripts/Conque-GDB'
-Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'pangloss/vim-javascript'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plugin 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -121,6 +126,7 @@ inoremap {<CR> {<CR>}<ESC>O
 imap jk <Esc>
 vmap jk <Esc>
 nmap jk <Esc>
+nmap <Leader>py <Plug>(Prettier)
 
 " setup for indent line
 let g:indentLine_char = '│'
