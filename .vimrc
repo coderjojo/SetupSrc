@@ -56,6 +56,23 @@ set shiftwidth=4
 set softtabstop=4
 set autoindent
 
+" Search Options
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+
+"Text Rendering Options
+
+set wrap
+set scrolloff=3
+set linebreak
+
+set autoread
+
+
+
+
 " indent for special file
 autocmd FileType c,cpp setlocal expandtab shiftwidth=2 softtabstop=2 cindent 
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 autoindent
