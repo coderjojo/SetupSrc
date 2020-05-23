@@ -149,3 +149,5 @@ nmap <Leader>py <Plug>(Prettier)
 let g:indentLine_char = '│'
 set tags=./tags,tags;$HOME
 "source ~/cscope_maps.vim
+
+:autocmd BufNewFile *.cpp 0r ~/.vim/templates/Cpp.cpp 
