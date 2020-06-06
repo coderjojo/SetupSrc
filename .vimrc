@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+set nocompatible              
 filetype off                  " required
 
 set ignorecase
@@ -32,8 +32,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plugin 'prettier/vim-prettier', { 'do': 'npm install' }
 Plugin 'dense-analysis/ale'
+Plugin 'tpope/vim-commentary'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -148,6 +149,8 @@ nmap <Leader>py <Plug>(Prettier)
 " setup for indent line
 let g:indentLine_char = '│'
 set tags=./tags,tags;$HOME
-"source ~/cscope_maps.vim
+"source ~/cscope_maps.vim"
 
 :autocmd BufNewFile *.cpp 0r ~/.vim/templates/Cpp.cpp 
+
+packloadall
