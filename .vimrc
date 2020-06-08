@@ -1,53 +1,34 @@
-set nocompatible              
-filetype off                  " required
+set nocompatible
 
-set ignorecase
-set smartcase
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'Valloric/YouCompleteMe'
+Plug 'vim-syntastic/syntastic'
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'vim-airline/vim-airline'
+Plug 'Raimondi/delimitMate'
+Plug 'morhetz/gruvbox'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-scripts/Conque-GDB'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-commentary'
+call plug#end()
 
-" all plugin
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
-
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
-
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'Raimondi/delimitMate'
-Plugin 'morhetz/gruvbox'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'Yggdroot/indentLine'
-Plugin 'vim-scripts/Conque-GDB'
-Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'maxmellon/vim-jsx-pretty'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'prettier/vim-prettier', { 'do': 'npm install' }
-Plugin 'dense-analysis/ale'
-Plugin 'tpope/vim-commentary'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-call glaive#Install()        " enable this line after the installation of glaive
-filetype plugin indent on    " required
 
 " custom setting
-set mouse=a
+
 set number
 set rnu 
 set encoding=utf-8
 set backspace=indent,eol,start
-set cursorline
+
 set guioptions=
 syntax on
 
@@ -66,20 +47,22 @@ set smartcase
 "Text Rendering Options
 
 set wrap
-set scrolloff=3
+
 set linebreak
 
-set autoread
 
 
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
 
+imap jj <Esc>
+vmap jj <Esc>
 
-" indent for special file
-autocmd FileType c,cpp setlocal expandtab shiftwidth=2 softtabstop=2 cindent 
-autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 autoindent
 
 " setup for ycm
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = 'python'
 let g:ycm_complete_in_comments = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -106,7 +89,6 @@ augroup autoformat_settings
   autocmd FileType python AutoFormatBuffer yapf
 augroup END
 " use google style for clang-format
-Glaive codefmt clang_format_style='google'
 
 " open NERDTree automatically when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
@@ -136,21 +118,3 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " setup for tagbar
 nmap <F8> :TagbarToggle<CR>
 
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
-inoremap {<CR> {<CR>}<ESC>O 
-imap jk <Esc>
-vmap jk <Esc>
-nmap jk <Esc>
-nmap <Leader>py <Plug>(Prettier)
-
-" setup for indent line
-let g:indentLine_char = '│'
-set tags=./tags,tags;$HOME
-"source ~/cscope_maps.vim"
-
-:autocmd BufNewFile *.cpp 0r ~/.vim/templates/Cpp.cpp 
-
-packloadall
