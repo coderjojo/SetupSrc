@@ -58,7 +58,7 @@ vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
 imap jj <Esc>
-vmap jj <Esc>
+
 
 
 " setup for ycm
