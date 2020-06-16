@@ -19,6 +19,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -59,8 +61,7 @@ imap <C-v> <ESC>"+pa
 
 imap jj <Esc>
 
-
-
+let g:lsc_auto_map = v:true
 " setup for ycm
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = 'python'
@@ -117,4 +118,4 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 " setup for tagbar
 nmap <F8> :TagbarToggle<CR>
-
+let g:coc_disable_startup_warning = 1
