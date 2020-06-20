@@ -120,4 +120,8 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 nmap <F8> :TagbarToggle<CR>
 let g:coc_disable_startup_warning = 1
 
+" Add extra space 
 inoremap {<CR> {<CR>}<ESC>O 
+
+" CPP template default
+:autocmd BufNewFile *.cpp 0r ~/.vim/templates/Cpp.cpp 
