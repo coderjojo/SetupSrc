@@ -4,7 +4,12 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
-
+Plug 'airblade/vim-gitgutter'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
@@ -22,6 +27,10 @@ Plug 'tpope/vim-commentary'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
 call plug#end()
 
 
@@ -120,9 +129,6 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " setup for tagbar
 nmap <F8> :TagbarToggle<CR>
 let g:coc_disable_startup_warning = 1
+inoremap {<CR> {<CR>}<ESC>O
 
-" Add extra space 
-inoremap {<CR> {<CR>}<ESC>O 
-
-" CPP template default
 :autocmd BufNewFile *.cpp 0r ~/.vim/templates/Cpp.cpp 
