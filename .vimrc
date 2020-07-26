@@ -31,6 +31,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 call plug#end()
 
 
@@ -82,6 +83,7 @@ let g:ycm_semantic_triggers =  {
   \ 'c' : ['re!\w{2}'],
   \ 'cpp' : ['re!\w{2}'],
   \ 'python' : ['re!\w{2}'],
+  \ 'javascript' : ['re!\w{2}'],
   \ }
 
 " setup for syntastic
@@ -132,3 +134,6 @@ let g:coc_disable_startup_warning = 1
 inoremap {<CR> {<CR>}<ESC>O
 
 :autocmd BufNewFile *.cpp 0r ~/.vim/templates/Cpp.cpp 
+
+" Emmet 
+let g:user_emmet_leader_key=','
