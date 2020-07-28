@@ -1,6 +1,7 @@
-set nocompatible
-
 call plug#begin()
+
+" Remove coc and fix some key mapping later 
+
 Plug 'preservim/nerdtree'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
@@ -32,6 +33,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'ap/vim-css-color'
+Plug 'maksimr/vim-jsbeautify'
 call plug#end()
 
 
@@ -98,7 +101,7 @@ let g:syntastic_python_checkers = ['flake8']
 
 " autoformat
 augroup autoformat_settings
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType c,cpp,proto,javascript,html AutoFormatBuffer clang-format
   autocmd FileType python AutoFormatBuffer yapf
 augroup END
 " use google style for clang-format
@@ -137,3 +140,13 @@ inoremap {<CR> {<CR>}<ESC>O
 
 " Emmet 
 let g:user_emmet_leader_key=','
+
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
