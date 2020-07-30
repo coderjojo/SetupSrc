@@ -1,6 +1,7 @@
 call plug#begin()
 
-" Remove coc and fix some key mapping later 
+" Remove coc and fix some key mapping later coc > ycm
+" test with nvim
 
 Plug 'preservim/nerdtree'
 Plug 'Valloric/YouCompleteMe'
