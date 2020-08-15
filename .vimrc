@@ -1,7 +1,6 @@
 call plug#begin()
 
-" Remove coc and fix some key mapping later coc > ycm
-" test with nvim
+" Remove coc and fix some key mapping later 
 
 Plug 'preservim/nerdtree'
 Plug 'Valloric/YouCompleteMe'
@@ -75,7 +74,7 @@ vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
 imap jj <Esc>
-
+noremap \t :botright vertical terminal
 let g:lsc_auto_map = v:true
 " setup for ycm
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
