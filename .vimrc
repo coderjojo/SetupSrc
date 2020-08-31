@@ -75,12 +75,6 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 
-" autoformat
-augroup autoformat_settings
-  autocmd FileType c,cpp,proto,javascript,html AutoFormatBuffer clang-format
-  autocmd FileType python AutoFormatBuffer yapf
-augroup END
-" use google style for clang-format
 
 " open NERDTree automatically when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
