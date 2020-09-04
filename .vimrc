@@ -1,37 +1,24 @@
-call plug#begin()
-
-" Remove coc and fix some key mapping later 
+call plug#begin() 
 
 Plug 'preservim/nerdtree'
-Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
 Plug 'vim-airline/vim-airline'
-Plug 'Raimondi/delimitMate'
 Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
-Plug 'vim-scripts/Conque-GDB'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'ap/vim-css-color'
 Plug 'maksimr/vim-jsbeautify'
@@ -65,7 +52,7 @@ set smartcase
 set wrap
 
 set linebreak
-
+set noswapfile 
 
 
 vmap <C-c> "+yi
@@ -76,20 +63,9 @@ imap <C-v> <ESC>"+pa
 imap jj <Esc>
 noremap \t :botright vertical terminal
 let g:lsc_auto_map = v:true
-" setup for ycm
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python'
-let g:ycm_complete_in_comments = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_semantic_triggers =  {
-  \ 'c' : ['re!\w{2}'],
-  \ 'cpp' : ['re!\w{2}'],
-  \ 'python' : ['re!\w{2}'],
-  \ 'javascript' : ['re!\w{2}'],
-  \ }
 
 " setup for syntastic
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -99,12 +75,6 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 
-" autoformat
-augroup autoformat_settings
-  autocmd FileType c,cpp,proto,javascript,html AutoFormatBuffer clang-format
-  autocmd FileType python AutoFormatBuffer yapf
-augroup END
-" use google style for clang-format
 
 " open NERDTree automatically when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
