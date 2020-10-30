@@ -194,9 +194,9 @@ bindsym $mod+Shift+x exec i3lock
 
 
 # Pulse Audio controls
-bindsym F11 exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym F10 exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym F9 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym F11 exec --no-startup-id amixer sset Master 5%+ #increase sound volume
+bindsym F10 exec --no-startup-id amixer sset Master 5%- #decrease sound volume
+bindsym F9 exec --no-startup-id amixer sset Master # mute sound
 bindsym F4 exec --no-startup-id amixer -D pulse sset Capture toggle
 bindsym $mod+F11 exec xbacklight -inc 20 # increase screen brightness
 bindsym $mod+F10 exec xbacklight -dec 20 # decrease screen brightness

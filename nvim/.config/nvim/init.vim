@@ -1,8 +1,6 @@
 call plug#begin() 
 Plug 'mhinz/vim-startify'
-Plug 'preservim/nerdtree'
-Plug 'vim-syntastic/syntastic'
-Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdtree' Plug 'vim-syntastic/syntastic' Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
@@ -24,25 +22,30 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'ap/vim-css-color'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'ryanoasis/vim-devicons'
+Plug 'mbbill/undotree'
 call plug#end()
 
 " custom setting
 
-
+syntax on
+filetype plugin indent on
 set t_ti= t_te=
 set number
 set rnu 
+let mapleader = " "
 set encoding=utf-8
 set backspace=indent,eol,start
-
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
 set guioptions=
 syntax on
 
 " indent for global
 set expandtab
-set shiftwidth=4
+set shiftwidth=4 tabstop=4
 set softtabstop=4
-set autoindent
+set smartindent
 
 " Search Options
 set hlsearch
@@ -52,19 +55,36 @@ set smartcase
 
 "Text Rendering Options
 
-set wrap
+set nowrap
 
 set linebreak
 set noswapfile 
 
-
-vmap <C-c> "+yi
+"To work outside vim
+vmap <C-c> "+y
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
+nnoremap <CR> :noh<CR><CR>
 imap jj <Esc>
 noremap \t :botright vertical terminal
+
+
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>h :wincmd <CR>
+
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <Leader>rp :resize 100<CR>
+
+nnoremap <Leader>v :split<enter>
+nnoremap <Leader>vv :vsplit<enter>
+
+
 let g:lsc_auto_map = v:true
 
 " setup for syntastic
@@ -84,7 +104,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 map <silent> <F5> : NERDTreeToggle<CR>
-
+nnoremap <c-h> :UndotreeToggle<cr>
 " setup for gruvbox
 set t_Co=256
 set background=dark
