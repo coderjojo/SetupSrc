@@ -1,6 +1,8 @@
 call plug#begin() 
 Plug 'mhinz/vim-startify'
-Plug 'preservim/nerdtree' Plug 'vim-syntastic/syntastic' Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdtree' 
+Plug 'vim-syntastic/syntastic' 
+Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
@@ -74,7 +76,7 @@ noremap \t :botright vertical terminal
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>h :wincmd <CR>
+nnoremap <leader>h :wincmd h<CR>
 
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
