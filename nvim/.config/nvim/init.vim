@@ -25,6 +25,7 @@ Plug 'ap/vim-css-color'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mbbill/undotree'
+Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
 " custom setting

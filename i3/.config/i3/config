@@ -41,8 +41,6 @@ font pango:DejaVu Sans Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-# You can also use any non-zero value if you'd like to have a border
-for_window [class=".*"] border pixel 0
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 
@@ -143,8 +141,7 @@ assign [class="Firefox"] $workspace3
 assign [class="Parole"]  $workspace9
 assign [class="discord"] $workspace4
 # reload the configuration file
-for_window [class="^.*"] border pixel 1
-new_window 1pixel
+for_window [class="^.*"] border pixel 2
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
