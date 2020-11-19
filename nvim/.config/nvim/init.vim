@@ -35,6 +35,8 @@ filetype plugin indent on
 set t_ti= t_te=
 set number
 set rnu 
+set mouse=a 
+set colorcolumn=80
 let mapleader = " "
 set encoding=utf-8
 set backspace=indent,eol,start
@@ -307,3 +309,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+let g:mkdp_auto_start = 0
+let g:mkdp_refresh_slow = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_filetypes = ['markdown']
