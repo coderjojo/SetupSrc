@@ -189,7 +189,6 @@ bindsym $mod+Shift+x exec i3lock
 
 
 
-
 # Pulse Audio controls
 bindsym F11 exec --no-startup-id amixer sset Master 5%+ #increase sound volume
 bindsym F10 exec --no-startup-id amixer sset Master 5%- #decrease sound volume

@@ -21,10 +21,10 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'ap/vim-css-color'
-Plug 'maksimr/vim-jsbeautify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mbbill/undotree'
 Plug 'liuchengxu/vim-which-key'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 " custom setting
@@ -140,18 +140,6 @@ let g:user_emmet_leader_key=','
 
 " Auto pairs
 let g:AutoPairsFlyMode = 0
-
-" Beautify 
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for json
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-" for jsx
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
 
 let g:UltiSnipsExpandTrigger = "<nop>"
 
@@ -313,3 +301,5 @@ let g:mkdp_auto_start = 0
 let g:mkdp_refresh_slow = 0
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_filetypes = ['markdown']
+
+nmap <Leader>py <Plug>(Prettier)
