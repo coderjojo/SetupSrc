@@ -19,12 +19,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'ap/vim-css-color'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mbbill/undotree'
 Plug 'liuchengxu/vim-which-key'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
 call plug#end()
 
 " custom setting
@@ -222,9 +223,5 @@ function! s:show_documentation()
 endfunction
 
 
-let g:mkdp_auto_start = 0
-let g:mkdp_refresh_slow = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_filetypes = ['markdown']
 
 nmap <Leader>py <Plug>(Prettier)
