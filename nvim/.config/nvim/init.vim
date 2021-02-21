@@ -26,6 +26,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 " custom setting
@@ -225,3 +226,8 @@ endfunction
 
 
 nmap <Leader>py <Plug>(Prettier)
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
