@@ -1,7 +1,6 @@
 call plug#begin() 
 Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdtree' 
-Plug 'vim-syntastic/syntastic' 
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
@@ -25,7 +24,7 @@ Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mxw/vim-jsx'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 call plug#end()
 
 " custom setting
@@ -91,18 +90,6 @@ nnoremap <Leader>vv :vsplit<enter>
 
 
 let g:lsc_auto_map = v:true
-
-" setup for syntastic
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-
 
 " open NERDTree automatically when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
@@ -181,3 +168,32 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+
+" Map leader to which_key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+set timeoutlen=500
+
+"
+"ale
+"let g:ale_fixers = {
+"  \    'javascript': ['eslint'],
+" \    'typescript': ['prettier', 'tslint'],
+"  \    'vue': ['eslint'],
+"  \    'scss': ['prettier'],
+"  \    'html': ['prettier'],
+"  \    'reason': ['refmt']
+" \}
+"let g:ale_fix_on_save = 1
+
+
+" FORMATTERS
+"au FileType javascript setlocal formatprg=prettier
+"au FileType javascript.jsx setlocal formatprg=prettier
+"au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+"au FileType html setlocal formatprg=js-beautify\ --type\ html
+"au FileType scss setlocal formatprg=prettier\ --parser\ css
+"au FileType css setlocal formatprg=prettier\ --parser\ css
+"
+
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
