@@ -1,6 +1,6 @@
+set nocompatible
 call plug#begin() 
 Plug 'mhinz/vim-startify'
-Plug 'preservim/nerdtree' 
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
@@ -15,15 +15,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
-Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-surround'
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 Plug 'liuchengxu/vim-which-key'
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'mxw/vim-jsx'
+Plug 'sheerun/vim-polyglot'
+Plug 'epilande/vim-react-snippets'
 "Plug 'dense-analysis/ale'
 call plug#end()
 
@@ -91,11 +88,6 @@ nnoremap <Leader>vv :vsplit<enter>
 
 let g:lsc_auto_map = v:true
 
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-map <silent> <F5> : NERDTreeToggle<CR>
 nnoremap <c-h> :UndotreeToggle<cr>
 " setup for gruvbox
 set t_Co=256
@@ -129,7 +121,6 @@ let g:user_emmet_leader_key=','
 " Auto pairs
 let g:AutoPairsFlyMode = 0
 
-let g:UltiSnipsExpandTrigger = "<nop>"
 
 let g:user_emmet_settings = {
 \  'javascript' : {
@@ -196,4 +187,39 @@ set timeoutlen=500
 "au FileType css setlocal formatprg=prettier\ --parser\ css
 "
 
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier']
+
+
+"Tree
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
+" Toggle Vexplore with Ctrl-O
+function! ToggleVExplorer()
+    if exists("t:expl_buf_num")
+        let expl_win_num = bufwinnr(t:expl_buf_num)
+        let cur_win_num = winnr()
+
+        if expl_win_num != -1
+            while expl_win_num != cur_win_num
+                exec "wincmd w"
+                let cur_win_num = winnr()
+            endwhile
+
+            close
+        endif
+
+        unlet t:expl_buf_num
+    else
+         Vexplore
+         let t:expl_buf_num = bufnr("%")
+    endif
+endfunction
+
+map <silent> <C-O> :call ToggleVExplorer()<CR>
+
+
+
+let g:UltiSnipsExpandTrigger="<C-l>"
+let g:AutoPairsShortcutFastWrap='<C-e>'
+

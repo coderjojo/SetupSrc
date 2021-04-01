@@ -42,7 +42,7 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -109,7 +109,7 @@ hide_edge_borders vertical
 hide_edge_borders both
 set $workspace1 "1: Desk"
 set $workspace2 "2: Terminal"
-set $workspace3 "3: FireFox"
+set $workspace3 "3: Broswer"
 set $workspace4 "4: Discord"
 set $workspace9 "9: Chill"
 
