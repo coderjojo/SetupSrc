@@ -111,6 +111,7 @@ set $workspace1 "1: Desk"
 set $workspace2 "2: Terminal"
 set $workspace3 "3: Broswer"
 set $workspace4 "4: Discord"
+set $workspace5 "5: VLC"
 set $workspace9 "9: Chill"
 
 # switch to workspace
@@ -118,7 +119,7 @@ bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace 5
+bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -137,9 +138,10 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace 10
 
-assign [class="Firefox"] $workspace3
+assign [class="brave-browser"] $workspace3
 assign [class="Parole"]  $workspace9
 assign [class="discord"] $workspace4
+assign [class="vlc"] $workspace4
 # reload the configuration file
 for_window [class="^.*"] border pixel 2
 bindsym $mod+Shift+c reload
@@ -190,12 +192,12 @@ bindsym $mod+Shift+x exec i3lock
 
 
 # Pulse Audio controls
-bindsym F11 exec --no-startup-id amixer sset Master 5%+ #increase sound volume
+bindsym F11 exec --no-startup-id amixer sset Master 10%+ #increase sound volume
 bindsym F10 exec --no-startup-id amixer sset Master 5%- #decrease sound volume
 bindsym F9 exec --no-startup-id amixer sset Master # mute sound
 bindsym F4 exec --no-startup-id amixer -D pulse sset Capture toggle
-bindsym $mod+F11 exec xbacklight -inc 20 # increase screen brightness
-bindsym $mod+F10 exec xbacklight -dec 20 # decrease screen brightness
+bindsym $mod+F11 exec xbacklight -inc 10 # increase screen brightness
+bindsym $mod+F10 exec xbacklight -dec 10 # decrease screen brightness
 bindsym F12 exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
 
 # Media player controls
@@ -207,3 +209,5 @@ bindsym F6 exec parole --previous
 exec_always --no-startup-id /home/csjojo/.config/polybar/launch.sh 
 exec_always compton -f
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+exec_always --no-startup-id safeeyes
+exec_always --no-startup-id redshift

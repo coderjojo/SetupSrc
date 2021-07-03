@@ -1,15 +1,12 @@
 set nocompatible
 call plug#begin() 
-Plug 'mhinz/vim-startify'
-Plug 'airblade/vim-gitgutter'
+"Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
@@ -20,8 +17,14 @@ Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
 Plug 'liuchengxu/vim-which-key'
 Plug 'sheerun/vim-polyglot'
-Plug 'epilande/vim-react-snippets'
 "Plug 'dense-analysis/ale'
+Plug 'honza/vim-snippets'
+
+"Vim telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
 
 " custom setting
@@ -30,8 +33,7 @@ syntax on
 filetype plugin indent on
 set t_ti= t_te=
 set number
-set rnu 
-set mouse=a 
+set rnu set mouse=a 
 set colorcolumn=80
 let mapleader = " "
 set encoding=utf-8
@@ -47,7 +49,7 @@ set expandtab
 set shiftwidth=4 tabstop=4
 set softtabstop=4
 set smartindent
-
+"
 " Search Options
 set hlsearch
 set ignorecase
@@ -57,8 +59,8 @@ set smartcase
 "Text Rendering Options
 
 set nowrap
-
 set linebreak
+
 set noswapfile 
 
 "To work outside vim
@@ -82,11 +84,13 @@ nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
 
-nnoremap <Leader>v :split<enter>
+nnoremap <Leader>vs :split<enter>
 nnoremap <Leader>vv :vsplit<enter>
 
+nnoremap H gT
+nnoremap L gt
 
-let g:lsc_auto_map = v:true
+" let g:lsc_auto_map = v:true
 
 nnoremap <c-h> :UndotreeToggle<cr>
 " setup for gruvbox
@@ -95,131 +99,25 @@ set background=dark
 colorscheme gruvbox
 " let g:gruvbox_contrast_dark = 'soft'
 
-" setup for ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-" setup for tagbar
-nmap <F8> :TagbarToggle<CR>
-let g:coc_disable_startup_warning = 1
 inoremap {<CR> {<CR>}<ESC>O
 
-:autocmd BufNewFile *.cpp 0r ~/.vim/templates/Cpp.cpp 
+"auto pair fly mode
+let g:AutoPairsShortcutFastWrap='<C-e>'
 
 " Emmet 
 let g:user_emmet_leader_key=','
-
-" Auto pairs
-let g:AutoPairsFlyMode = 0
-
-
 let g:user_emmet_settings = {
 \  'javascript' : {
 \      'extends' : 'jsx',
 \  },
 \}
-let b:ale_fixers = ['prettier', 'eslint']
+
+"vim indent
 let g:indentLine_setColors = 0
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier']
+set updatetime=300
 
 " Map leader to which_key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 set timeoutlen=500
-
-"
-"ale
-"let g:ale_fixers = {
-"  \    'javascript': ['eslint'],
-" \    'typescript': ['prettier', 'tslint'],
-"  \    'vue': ['eslint'],
-"  \    'scss': ['prettier'],
-"  \    'html': ['prettier'],
-"  \    'reason': ['refmt']
-" \}
-"let g:ale_fix_on_save = 1
-
-
-" FORMATTERS
-"au FileType javascript setlocal formatprg=prettier
-"au FileType javascript.jsx setlocal formatprg=prettier
-"au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-"au FileType html setlocal formatprg=js-beautify\ --type\ html
-"au FileType scss setlocal formatprg=prettier\ --parser\ css
-"au FileType css setlocal formatprg=prettier\ --parser\ css
-"
-
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint', 'coc-prettier']
-
-
-"Tree
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 25
-" Toggle Vexplore with Ctrl-O
-function! ToggleVExplorer()
-    if exists("t:expl_buf_num")
-        let expl_win_num = bufwinnr(t:expl_buf_num)
-        let cur_win_num = winnr()
-
-        if expl_win_num != -1
-            while expl_win_num != cur_win_num
-                exec "wincmd w"
-                let cur_win_num = winnr()
-            endwhile
-
-            close
-        endif
-
-        unlet t:expl_buf_num
-    else
-         Vexplore
-         let t:expl_buf_num = bufnr("%")
-    endif
-endfunction
-
-map <silent> <C-O> :call ToggleVExplorer()<CR>
-
-
-
-let g:UltiSnipsExpandTrigger="<C-l>"
-let g:AutoPairsShortcutFastWrap='<C-e>'
-
