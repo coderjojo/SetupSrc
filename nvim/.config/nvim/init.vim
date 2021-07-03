@@ -106,13 +106,22 @@ nnoremap H gT
 nnoremap L gt
 
 " let g:lsc_auto_map = v:true
-
 nnoremap <c-h> :UndotreeToggle<cr>
+
 " setup for gruvbox
 set t_Co=256
+set termguicolors
 set background=dark
 colorscheme gruvbox
-" let g:gruvbox_contrast_dark = 'soft'
+
+let g:gruvbox_contrast_dark = 'soft'
+
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+let g:gruvbox_invert_selection='0'
 
 inoremap {<CR> {<CR>}<ESC>O
 
@@ -187,8 +196,8 @@ require("lsp")
 require("treesitter")
 require("completion")
 
-vim.fn.sign_define("LspDiagnosticsSignError", {text = "🚫", numhl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "⚠", numhl = "LspDiagnosticsDefaultWarning"})
+vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 EOF
