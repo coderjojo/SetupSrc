@@ -1,4 +1,5 @@
 set nocompatible
+
 call plug#begin() 
 "Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
@@ -35,6 +36,8 @@ Plug 'glepnir/lspsaga.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+
+Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
 
@@ -165,13 +168,6 @@ nnoremap <Leader>rg :lua require'telescope.builtin'.live_grep{}<CR>
 nnoremap <Leader>cs :lua require'telescope.builtin'.colorscheme{}<CR>
 
 " >> Lsp key bindings
-nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
 
 "lspsaga
 nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
@@ -190,4 +186,10 @@ require("telescope")
 require("lsp")
 require("treesitter")
 require("completion")
+
+vim.fn.sign_define("LspDiagnosticsSignError", {text = "🚫", numhl = "LspDiagnosticsDefaultError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "⚠", numhl = "LspDiagnosticsDefaultWarning"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 EOF
+
