@@ -38,6 +38,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
@@ -108,13 +109,14 @@ nnoremap L gt
 " let g:lsc_auto_map = v:true
 nnoremap <c-h> :UndotreeToggle<cr>
 
-" setup for gruvbox
+nnoremap <C-e> :NvimTreeToggle<CR>
+"" setup for gruvbox
 set t_Co=256
 set termguicolors
 set background=dark
 colorscheme gruvbox
 
-let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_dark = 'dark'
 
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -179,8 +181,6 @@ nnoremap <Leader>cs :lua require'telescope.builtin'.colorscheme{}<CR>
 " >> Lsp key bindings
 
 "lspsaga
-nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
-vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 nnoremap <silent> K     <cmd>Lspsaga hover_doc<CR>

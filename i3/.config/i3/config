@@ -143,7 +143,6 @@ assign [class="Parole"]  $workspace9
 assign [class="discord"] $workspace4
 assign [class="vlc"] $workspace4
 # reload the configuration file
-for_window [class="^.*"] border pixel 2
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -191,6 +190,10 @@ bindsym $mod+Shift+x exec i3lock
 
 
 
+# You can also use any non-zero value if you'd like to have a border
+for_window [class=".*"] border pixel 0
+
+# Examples
 # Pulse Audio controls
 bindsym F11 exec --no-startup-id amixer sset Master 10%+ #increase sound volume
 bindsym F10 exec --no-startup-id amixer sset Master 5%- #decrease sound volume
