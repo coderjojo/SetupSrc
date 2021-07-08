@@ -40,6 +40,16 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 call plug#end()
 
 " custom setting
@@ -59,7 +69,7 @@ set undofile
 set incsearch
 set guioptions=
 syntax on
-
+set scrolloff=5
 " indent for global
 set expandtab
 set shiftwidth=4 tabstop=4
@@ -148,8 +158,8 @@ set updatetime=300
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 set timeoutlen=500
 
-"Telescope stuff 
 
+"Telescope stuff 
 
 " >> Telescope bindings
 nnoremap <Leader>pp :lua require'telescope.builtin'.builtin{}<CR>
@@ -201,4 +211,5 @@ vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnost
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 EOF
+
 
