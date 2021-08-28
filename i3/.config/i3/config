@@ -212,6 +212,6 @@ bindsym F6 exec parole --previous
 exec_always --no-startup-id /home/csjojo/.config/polybar/launch.sh 
 exec_always compton -f
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
-exec_always --no-startup-id safeeyes
+#exec_always --no-startup-id safeeyes
 exec_always --no-startup-id redshift
-exec ~/Downloads/software test/activitywatch/aw-qt
+#exec ~/Downloads/software test/activitywatch/aw-qt

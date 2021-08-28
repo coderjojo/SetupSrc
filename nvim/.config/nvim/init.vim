@@ -47,8 +47,8 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 call plug#end()
 
@@ -190,6 +190,8 @@ nnoremap <Leader>cs :lua require'telescope.builtin'.colorscheme{}<CR>
 
 " >> Lsp key bindings
 
+nnoremap <Leader> qw : lua require'lspconfig'.denols.setup{}<CR>
+
 "lspsaga
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
@@ -205,11 +207,12 @@ require("telescope")
 require("lsp")
 require("treesitter")
 require("completion")
-
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 EOF
+
+" test prettier
 
 
