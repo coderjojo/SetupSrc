@@ -100,6 +100,19 @@ nnoremap <CR> :noh<CR><CR>
 imap jj <Esc>
 noremap \t :botright vertical terminal
 
+"Some remaps
+nnoremap Y y$
+xnoremap <leader>p "_dP
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ? ?<c-g>u
+inoremap ! !<c-g>u
+
+
+"Movement
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
