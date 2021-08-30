@@ -49,6 +49,7 @@ Plug 'honza/vim-snippets'
 
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'folke/trouble.nvim'
 
 call plug#end()
 
@@ -202,6 +203,17 @@ nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<
 nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
 nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
 
+
+"trouble
+
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
+
 lua <<EOF
 require("telescope")
 require("lsp")
@@ -213,6 +225,5 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiag
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 EOF
 
-" test prettier
 
 
