@@ -21,8 +21,6 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'dense-analysis/ale'
 Plug 'honza/vim-snippets'
 
-"test
-Plug 'dstein64/vim-startuptime'
 "Vim telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -71,6 +69,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set guioptions=
+syntax on
 set scrolloff=5
 " indent for global
 set expandtab
@@ -151,10 +150,6 @@ endif
 let g:gruvbox_invert_selection='0'
 
 inoremap {<CR> {<CR>}<ESC>O
-
-"aireline
-
-let g:airline#extensions#tabline#enabled = 1
 
 "auto pair fly mode
 let g:AutoPairsShortcutFastWrap='<C-e>'
@@ -237,11 +232,10 @@ require("telescope")
 require("lsp")
 require("treesitter")
 require("completion")
---vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
---vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
---vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
---vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
+vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 EOF
-
 
 
